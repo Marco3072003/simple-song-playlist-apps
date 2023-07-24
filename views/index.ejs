@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Songs</title>
+</head>
+<body>
+
+<table border ="1">
+    <tr>
+        <td colspan="6">
+            <h3>Songs below ordered by playtimes</h3>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6" style="text-align: center; padding: 3px;">
+            <a href="/inputSongs">
+                <button style="width: 100%;">ADD SONGS</button>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th>No</th>
+        <th>Judul</th>
+        <th>Artis</th>
+        <th>Detail</th>
+        <th>Play Song</th>
+        <th>Delete</th>
+        
+    </tr>
+    <% 
+    let no = 1;
+    if(playList.length > 0){%>
+    <tr>
+        <% playList.forEach( (song) => { %>
+
+        <td><%= no  %></td>
+        <!-- kolom title -->
+        <td><%= song.title %></td>
+        <!-- kolom artis -->
+        <td>
+        <% song.artis.forEach((artis) => {%>
+            
+        - <%= artis %>
+            <br>
+        <% }); %>
+        </td>
+        <!-- kolom detail -->
+        <td>
+            <a href="/songs/<%=song.id%>">Detail</a>
+        </td>
+        <!-- kolom play lagu -->
+        <td>
+            <a href="/play/<%=song.id%>">
+            <button onclick="newWindow()">Play Song</button>
+            </a>
+            <script>
+                function newWindow(){
+                   window.open('<%=song.url%>', '_blank');
+                }
+            </script>
+        </td>
+        
+        <!-- kolom delete -->
+        <td>
+            <a href="/delete/<%=song.id%>">
+                <button>Delete</button>
+            </a>
+        </td>
+        
+
+    </tr>
+    <% no++ %>
+    <% }); %>
+    
+    <% }else{ %>
+    <tr>
+        <td colspan="6">Tidak ada lagu di dalam playlist!!</td>
+    </tr>
+        <%}%>
+</table>
+</body>
+
+</html>

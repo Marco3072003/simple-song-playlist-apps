@@ -90,7 +90,7 @@ app.get('/delete/:id', (req,res) => {
     
 });
 
-
+export default app;
 //run apps on port 3000
 app.listen(3000, ()=>{
     console.log('Server Berjalan di port 3000');

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 //for direct view static filte kind html to public folder
 app.use(express.static('public'));
 

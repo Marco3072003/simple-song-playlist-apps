@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 //for direct view static filte kind html to public folder
 app.use(express.static('public'));
+
+// Set the views directory and view engine for EJS
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+
+
 //for parsing req boy to key and value object
 app.use(express.urlencoded({extended:true}));
 
